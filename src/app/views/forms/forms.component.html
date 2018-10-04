@@ -1,0 +1,28 @@
+<div class="container-fluid">
+
+<form [formGroup]="trainingForm" (ngSubmit)="sendTraining(f)" #f="ngForm" >
+    <div fxLayout="row" fxLayout.lt-md="column" fxLayoutWrap="wrap">
+        <div fxFlex="8.5"></div>
+        <div fxFlex="30">
+            <div class="pb-1">
+            <mat-form-field class="full-width">
+                <input matInput placeholder="Nombre de Kilomètres" name="kilometre" [formControl]="trainingForm.controls['kilometre']">
+            </mat-form-field>
+            </div>
+            <div class="pb-1">
+                <mat-form-field class="full-width">
+                    <input matInput [matDatepicker]="picker" placeholder="Choose a date" name="dateSortie" [formControl]="trainingForm.controls['dateSortie']">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+            </div>
+            <div class="pb-1">
+                <mat-checkbox name="isVelo" [formControl]="trainingForm.controls['isVelo']">Course à Pieds</mat-checkbox>
+            </div>
+            <div class="pb-1">
+                <button class="pull-right" mat-stroked-button color="primary" [disabled]="!trainingForm.valid" type="submit" >Envoyez</button>
+            </div>
+        </div>
+  </div>
+</form>
+</div>
