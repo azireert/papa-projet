@@ -3,7 +3,7 @@ import {NgModule, NO_ERRORS_SCHEMA} from '@angular/core';
 
 import { AppComponent } from './app.component';
 import {HttpClientModule} from '@angular/common/http';
-import {CardsComponent} from './views/cards/cards.component';
+import {CardsComponent, DialogComponent} from './views/cards/cards.component';
 import {UserService} from './shared/services/user.service';
 import {
     MatCardModule,
@@ -12,7 +12,7 @@ import {
     MatMenuModule,
     MatFormFieldModule,
     MatInputModule,
-    MatDatepickerModule, DateAdapter, MatNativeDateModule, MatCheckboxModule
+    MatDatepickerModule, MatNativeDateModule, MatCheckboxModule, MatTableModule, MatPaginatorModule, MatDialogModule
 } from '@angular/material';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {HeaderComponent} from './shared/components/header/header.component';
@@ -25,11 +25,11 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {CommonDirectivesModule} from './directives/common/common-directives.module';
 import {DataService} from './shared/services/data.service';
 import { CalendarComponent } from './views/calendar/calendar.component';
-import {adapterFactory} from 'angular-calendar/date-adapters/moment';
-import {CalendarModule} from 'angular-calendar';
-
-
-
+import {adapterFactory} from 'angular-calendar/date-adapters/date-fns';
+import {CalendarModule , DateAdapter} from 'angular-calendar';
+import { TableComponent } from './views/table/table.component';
+import {UpdateService} from './shared/services/update.service';
+import { FooterComponent } from './shared/components/footer/footer.component';
 
 
 @NgModule({
@@ -38,8 +38,11 @@ import {CalendarModule} from 'angular-calendar';
     CardsComponent,
     HeaderComponent,
     ChartComponent,
+    DialogComponent,
     FormsComponent,
-    CalendarComponent
+    CalendarComponent,
+    TableComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,15 +52,18 @@ import {CalendarModule} from 'angular-calendar';
     MatMenuModule,
     MatIconModule,
     MatFormFieldModule,
+    MatDialogModule,
     BrowserAnimationsModule,
     MatDatepickerModule,
+    MatPaginatorModule,
     MatCheckboxModule,
+    MatTableModule,
     ReactiveFormsModule,
     CommonDirectivesModule,
-    CalendarModule.forRoot({
-      provide: DateAdapter,
-      useFactory: adapterFactory
-    }),
+      CalendarModule.forRoot({
+          provide: DateAdapter,
+          useFactory: adapterFactory
+      }),
     FormsModule,
     MatNativeDateModule,
     MatInputModule,
@@ -68,8 +74,10 @@ import {CalendarModule} from 'angular-calendar';
   providers: [
       UserService,
       TrainingService,
-      DataService
+      DataService,
+      UpdateService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [DialogComponent]
 })
 export class AppModule { }

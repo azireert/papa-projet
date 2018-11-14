@@ -9,7 +9,7 @@ import {Training} from '../../shared/model/training.model';
 })
 export class ChartComponent implements OnInit {
     public tabData: Training[];
-    public chartType = 'line';
+    public chartType = 'bar';
     public chartDatasets: Array<any> = [
         {data: [65 , 59, 80, 81, 56, 55, 40 , 85, 150 , 33 , 65, 15], label: 'Vélo'},
         {data: [28, 48, 40, 19, 86, 27, 90], label: 'Course à Pieds'}
@@ -47,7 +47,6 @@ export class ChartComponent implements OnInit {
     ngOnInit() {
         this.dataService.getAllData().subscribe(data => {
             this.tabData = data;
-            console.log(data);
         });
     }
 

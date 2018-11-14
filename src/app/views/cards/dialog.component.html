@@ -1,0 +1,24 @@
+<h1 mat-dialog-title>Modifier le profil</h1>
+<form [formGroup]="userForm" (ngSubmit)="sendUser(f)" #f="ngForm" >
+<div mat-dialog-content>
+  <mat-form-field>
+    <input matInput name="name" placeholder="prenom" [formControl]="userForm.controls['name']" >
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput name="username" placeholder="nom" [formControl]="userForm.controls['username']">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput name="age" placeholder="age" [formControl]="userForm.controls['age']">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput name="height" placeholder="taille" [formControl]="userForm.controls['height']">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput name="weight" placeholder="poids" [formControl]="userForm.controls['weight']">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()" type="button">Quittez</button>
+  <button mat-button cdkFocusInitial type="submit" >Ok</button>
+</div>
+</form>

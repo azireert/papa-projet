@@ -1,6 +1,6 @@
 <?php
 try {
-    $db = new PDO('mysql:host=localhost;dbname=db_andre', 'root', 'basketeurdu59');
+    $db = new PDO('mysql:host=localhost;dbname=db_andre', 'root', '');
 }
 catch(Exception $e)
 {
@@ -10,7 +10,7 @@ catch(Exception $e)
 
 $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 
-$answ = $db->query('SELECT kilometre , is_velo , date_sortie FROM sortie_velo');
+$answ = $db->query('SELECT kilometre , isVelo , dateSortie , duree , forme FROM sortie_velo');
 
 $i = 0;
 while ($data = $answ->fetch()){

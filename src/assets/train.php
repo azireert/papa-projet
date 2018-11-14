@@ -1,6 +1,6 @@
 <?php
 try {
-    $db = new PDO('mysql:host=localhost;dbname=db_andre', 'root', 'basketeurdu59');
+    $db = new PDO('mysql:host=localhost;dbname=db_andre', 'root', '');
 }
 catch(Exception $e)
 {
@@ -22,15 +22,19 @@ catch(Exception $e)
     $dateSortie = date('Y-m-d', strtotime($request->dateSortie));
 
 
-    $stmt = $db->prepare("INSERT INTO sortie_velo (kilometre, is_velo, date_sortie) VALUES (:kilometre, :is_velo,:date_sortie)");
+    $stmt = $db->prepare("INSERT INTO sortie_velo (kilometre, isVelo, dateSortie , duree, forme) VALUES (:kilometre, :is_velo,:date_sortie , :duree, :forme)");
     $stmt->bindParam(':kilometre', $kilometre);
     $stmt->bindParam(':is_velo', $is_velo);
     $stmt->bindParam(':date_sortie', $date_sortie);
+    $stmt->bindParam(':duree', $duree);
+    $stmt->bindParam(':forme', $forme);
 
     // insertion d'une ligne
     $kilometre = $request->kilometre;
     $is_velo = $isVelo;
     $date_sortie = $dateSortie;
+    $duree = $request->duree;
+    $forme = $request->forme;
     $stmt->execute();
 
     $response_array['msg'] = "success";

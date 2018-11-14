@@ -17,6 +17,8 @@ export class FormsComponent implements OnInit {
       this.trainingForm = this.fb.group({
           kilometre: ['', [Validators.required]],
           dateSortie: ['', [Validators.required]],
+          duree: ['', [Validators.required]],
+          forme: ['', [Validators.required]],
           isVelo: ['']
       });
   }
@@ -26,11 +28,14 @@ export class FormsComponent implements OnInit {
     const training = new Training(
         formValue['kilometre'],
         formValue['isVelo'],
-        formValue['dateSortie']
+        formValue['dateSortie'],
+        formValue['duree'],
+        formValue['forme'],
     );
     this.trainingService.postTraining(training).subscribe(
         next => {
             console.log(next);
+            window.location.reload();
         }, error => {
             console.log(error);
         }

@@ -3,7 +3,7 @@ export class User {
         public name: string,
         public username: string,
         public weight: number,
-        public age: number,
+        public age: Date,
         public height: number,
     ) {}
 }
