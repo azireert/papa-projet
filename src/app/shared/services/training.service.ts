@@ -7,10 +7,14 @@ import {Training} from '../model/training.model';
   providedIn: 'root'
 })
 export class TrainingService {
-  private dataURL = 'assets/train.php';
+  private dataURL = 'http://localhost:3000/training';
   constructor(private http: HttpClient) { }
 
     postTraining(training: Training): Observable<any> {
         return this.http.post<Training[]>(this.dataURL , training);
+    }
+
+    getAllData(): Observable<Training[]> {
+        return this.http.get<Training[]>(this.dataURL);
     }
 }

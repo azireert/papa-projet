@@ -1,7 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import {CalendarEvent, CalendarView} from 'angular-calendar';
 import { Training} from '../../shared/model/training.model';
-import { DataService} from '../../shared/services/data.service';
+import { TrainingService} from '../../shared/services/training.service';
 import {
     isSameDay,
     isSameMonth,
@@ -43,7 +43,7 @@ export class CalendarComponent implements OnInit {
         }
     ];
     activeDayIsOpen = true;
-  constructor(private dataService: DataService) { }
+  constructor(private trainingService: TrainingService) { }
 
     eventClicked({ event }: { event: CalendarEvent }): void {
         console.log('Event clicked', event);
@@ -66,7 +66,7 @@ export class CalendarComponent implements OnInit {
       this.getData();
   }
   getData(): void {
-      this.dataService.getAllData().subscribe(data => {
+      this.trainingService.getAllData().subscribe(data => {
           this.tabData = data;
       });
 }

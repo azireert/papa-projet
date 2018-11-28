@@ -23,12 +23,10 @@ import {TrainingService} from './shared/services/training.service';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {CommonDirectivesModule} from './directives/common/common-directives.module';
-import {DataService} from './shared/services/data.service';
 import { CalendarComponent } from './views/calendar/calendar.component';
 import {adapterFactory} from 'angular-calendar/date-adapters/date-fns';
 import {CalendarModule , DateAdapter} from 'angular-calendar';
 import { TableComponent } from './views/table/table.component';
-import {UpdateService} from './shared/services/update.service';
 import { FooterComponent } from './shared/components/footer/footer.component';
 
 
@@ -73,9 +71,7 @@ import { FooterComponent } from './shared/components/footer/footer.component';
   schemas: [ NO_ERRORS_SCHEMA ],
   providers: [
       UserService,
-      TrainingService,
-      DataService,
-      UpdateService
+      TrainingService
   ],
   bootstrap: [AppComponent],
   entryComponents: [DialogComponent]

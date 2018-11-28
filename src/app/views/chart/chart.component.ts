@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {DataService} from '../../shared/services/data.service';
+import { TrainingService} from '../../shared/services/training.service';
 import {Training} from '../../shared/model/training.model';
 
 @Component({
@@ -43,9 +43,9 @@ export class ChartComponent implements OnInit {
     };
     public chartClicked(e: any): void { }
     public chartHovered(e: any): void { }
-    constructor(private dataService: DataService) {}
+    constructor(private trainingService: TrainingService) {}
     ngOnInit() {
-        this.dataService.getAllData().subscribe(data => {
+        this.trainingService.getAllData().subscribe(data => {
             this.tabData = data;
         });
     }

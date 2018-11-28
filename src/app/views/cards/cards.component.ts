@@ -3,7 +3,6 @@ import {FormBuilder , Validators , FormGroup} from '@angular/forms';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import {UserService} from '../../shared/services/user.service';
 import {User} from '../../shared/model/user.model';
-import {UpdateService} from '../../shared/services/update.service';
 
 
 @Component({
@@ -65,7 +64,7 @@ export class DialogComponent implements OnInit {
     constructor(
         public dialogRef: MatDialogRef<DialogComponent>,
         @Inject(MAT_DIALOG_DATA) public data: User,
-        private updateService: UpdateService,
+        private userService: UserService,
         private fb: FormBuilder) {}
 
     ngOnInit() {
@@ -92,7 +91,7 @@ export class DialogComponent implements OnInit {
             formValue['height'],
         );
         console.log(user);
-        this.updateService.updateUser(user).subscribe(
+        this.userService.updateUser(user).subscribe(
             next => {
                 console.log(next);
                 window.location.reload();

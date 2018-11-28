@@ -9,7 +9,7 @@
     <!-- Weight Column -->
     <ng-container matColumnDef="dateSortie">
       <th mat-header-cell *matHeaderCellDef> Date </th>
-      <td [ngClass]="{'table-primary': element.isVelo == '1','table-success': element.isVelo == '0' }" mat-cell *matCellDef="let element"> {{element.dateSortie}} </td>
+      <td [ngClass]="{'table-primary': element.isVelo == '1','table-success': element.isVelo == '0' }" mat-cell *matCellDef="let element"> {{element.dateSortie | date : 'dd/MM/yyyy'}} </td>
     </ng-container>
 
     <!-- Symbol Column -->
